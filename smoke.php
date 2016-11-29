@@ -52,7 +52,7 @@
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>				
 			
 				<?php
-				require('db_query.php');					
+				require_once('db_query.php');					
 				$result = run_query("select * from char_base_stats where char_id = 1");
 				
 				$row = mysqli_fetch_array($result);
@@ -76,13 +76,29 @@
 		</td>
 		<td bgcolor="#aaa" width="50%" align="left" style="border:1px solid black">
 			<h2 align="center">Saving Throws</h2>
-			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>			
-				<tr><td></td><td>-1</td><td>Strength</td></tr>
-				<tr><td>*</td><td>+6</td><td>Dexterity</td></tr>
-				<tr><td></td><td>+1</td><td>Constitution</td></tr>
-				<tr><td>*</td><td>+2</td><td>Intelligence</td></tr>
-				<tr><td></td><td>+1</td><td>Wisdom</td></tr>
-				<tr><td></td><td>+3</td><td>Charisma</td></tr>		
+			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
+			
+				<?php
+				require_once('db_query.php');					
+				$result1 = run_query("select * from char_saves where char_id = 1");
+				
+				$row = mysqli_fetch_array($result1);
+				
+				$strength = $row['strength'];
+				$dexterity = $row['dexterity'];
+				$constitution = $row['constitution'];
+				$intelligence = $row['intelligence'];
+				$wisdom = $row['wisdom'];
+				$charisma = $row['charisma'];
+				
+				echo "<tr><td></td><td>$strength</td><td>Strength</td></tr>";
+				echo "<tr><td>*</td><td>$dexterity</td><td>Dexterity</td></tr>";
+				echo "<tr><td></td><td>$constitution</td><td>Constitution</td></tr>";
+				echo "<tr><td>*</td><td>$intelligence</td><td>Intelligence</td></tr>";
+				echo "<tr><td></td><td>$wisdom</td><td>Wisdom</td></tr>";
+				echo "<tr><td></td><td>$charisma</td><td>Charisma</td></tr>";
+				?>				
+				
 			</table>
 			<br />				
 		</td>
