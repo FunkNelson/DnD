@@ -4,7 +4,34 @@
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
 </head>
 <body>
+	
+	
+	<?php
+	require('db_connection_config_dnd.php');	
+	$db = mysqli_connect($server, $db_username, $db_password, $database);
+	
+	if (mysqli_connect_errno())
+	{
+        echo "Error: Could not connect to database.";
+	echo mysqli_connect_error();
+        exit;
+	}
 
+	$query = "select * from char_attributes where char_id = 1";
+	echo $query;
+
+	$result = mysqli_query($db, $query);
+        
+	while ($row = mysqli_fetch_array($result))
+	{
+	echo $row['name'];
+	}
+
+	
+	mysqli_close($db);
+		
+	?>
+	
 	<!-- Header -->
 	<table bgcolor="#000000" width="100%" border="0" align="center" cellpadding="5">
 		<tr>
