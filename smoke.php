@@ -4,41 +4,15 @@
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
 </head>
 <body>
-	
-	
-	<?php
-	require('db_connection_config_dnd.php');	
-	$db = mysqli_connect($server, $db_username, $db_password, $database);
-	
-	if (mysqli_connect_errno())
-	{
-        echo "Error: Could not connect to database.";
-	echo mysqli_connect_error();
-        exit;
-	}
 
-	$query = "select * from char_attributes where char_id = 1";
-	echo $query;
 
-	$result = mysqli_query($db, $query);
-        
-	while ($row = mysqli_fetch_array($result))
-	{
-	echo $row['name'];
-	}
-
-	
-	mysqli_close($db);
-		
-	?>
-	
 	<!-- Header -->
 	<table bgcolor="#000000" width="100%" border="0" align="center" cellpadding="5">
 		<tr>
 		<td align="center" width="20%">
 			<img src="http://a819.phobos.apple.com/us/r1000/075/Purple/v4/26/91/b3/2691b398-ad8b-8460-d2b4-130f901218e2/mza_7357829886999610302.png" width="30%" height="10%">
 		</td>
-		<td align="left" width="30%">
+		<td align="left" width="30%">		
 			<h1 style="color:#FFFFFF">Smoking Mirror</h1>
 		</td>
 		<td align="left" width="50%">
@@ -74,14 +48,42 @@
 		<tr>
 		<td bgcolor="#aaa" width="50%" align="left" style="border:1px solid black">
 			<h2 align="center">Character Stats</h2>
-			
+					
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>				
-				<tr><td>8</td><td>-1</td><td>Strength</td></tr>
-				<tr><td>18</td><td>+4</td><td>Dexterity</td></tr>
-				<tr><td>12</td><td>+1</td><td>Constitution</td></tr>
-				<tr><td>11</td><td>0</td><td>Intelligence</td></tr>
-				<tr><td>12</td><td>+1</td><td>Wisdom</td></tr>
-				<tr><td>16</td><td>+3</td><td>Charisma</td></tr>
+			
+				<?php
+				require('db_connection_config_dnd.php');	
+				$db = mysqli_connect($server, $db_username, $db_password, $database);
+	
+				if (mysqli_connect_errno())
+				{
+					echo "Error: Could not connect to database.";
+					echo mysqli_connect_error();
+					exit;
+				}
+				
+				$query = "select * from char_base_stats where char_id = 1";
+				$result = mysqli_query($db, $query);
+				
+				$row = mysqli_fetch_array($result);
+				
+				$strength = $row['strength'];
+				$dexterity = $row['dexterity'];
+				$constitution = $row['constitution'];
+				$intelligence = $row['intelligence'];
+				$wisdom = $row['wisdom'];
+				$charisma = $row['charisma'];
+				
+				echo "<tr><td>$strength</td><td>-1</td><td>Strength</td></tr>";
+				echo "<tr><td>$dexterity</td><td>+4</td><td>Dexterity</td></tr>";
+				echo "<tr><td>$constitution</td><td>+1</td><td>Constitution</td></tr>";
+				echo "<tr><td>$intelligence</td><td>0</td><td>Intelligence</td></tr>";
+				echo "<tr><td>$wisdom</td><td>+1</td><td>Wisdom</td></tr>";
+				echo "<tr><td>$charisma</td><td>+3</td><td>Charisma</td></tr>";
+				
+				$result->free();
+				mysqli_close($db);				
+				?>				
 			</table>  
 			<br />
 		</td>
