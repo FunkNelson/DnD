@@ -1,11 +1,4 @@
 <?php
-
-
-function construct_query($tablename, $char_id) {
-
-	return "select * from $tablename where char_id = $char_id";		
-}
-
 function run_query($query) {
 	require('db_connection_config_dnd.php');
 	
@@ -22,12 +15,4 @@ function run_query($query) {
 	mysqli_close($db);
 	return $result;
 }
-
-function close_db_connection($result) {
-		
-	$result->free();
-	
-}
-
-
 ?>	
