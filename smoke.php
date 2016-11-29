@@ -114,25 +114,71 @@
 		<td bgcolor="#b5dcb3" width="100%" align="left" colspan="2" style="border:1px solid black">
 			<h2 align="center">Skills</h2>
 			<table border="3" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
+			
+				<?php
+				require_once('db_query.php');					
+				$result = run_query("select * from char_skills where char_id = 1");
 				
-				<tr><td>*</td><td>+6</td><td>Acrobatics</td></tr>	    
-				<tr><td></td><td>+1</td><td>Animal Handling</td></tr>
-				<tr><td></td><td>0</td><td>Arcana</td></tr>
-				<tr><td></td><td>-1</td><td>Athletics</td></tr>
-				<tr><td>*</td><td>+7</td><td>Deception</td></tr>
-				<tr><td></td><td>0</td><td>History</td></tr>
-				<tr><td>*</td><td>+3</td><td>Insight</td></tr>
-				<tr><td>*</td><td>+5</td><td>Intimidation</td></tr>
-				<tr><td></td><td>0</td><td>Investigation</td></tr>
-				<tr><td></td><td>+1</td><td>Medicine</td></tr>
-				<tr><td></td><td>0</td><td>Nature</td></tr>
-				<tr><td>*</td><td>+3</td><td>Perception</td></tr>
-				<tr><td></td><td>+3</td><td>Performance</td></tr>
-				<tr><td>*</td><td>+7</td><td>Persuasion</td></tr>
-				<tr><td></td><td>0</td><td>Religion</td></tr>
-				<tr><td>*</td><td>+6</td><td>Sleight of Hand</td></tr>
-				<tr><td>*</td><td>+6</td><td>Stealth</td></tr>
-				<tr><td></td><td>+1</td><td>Survival</td></tr>
+				$row = mysqli_fetch_array($result);
+				
+				$acrobatics = $row['acrobatics'];
+				$animal = $row['animal'];
+				$arcana = $row['arcana'];
+				$athletics = $row['athletics'];
+				$deception = $row['deception'];
+				$history = $row['history'];
+				$insight = $row['insight'];
+				$intimidation = $row['intimidation'];
+				$investigation = $row['investigation'];
+				$medicine = $row['medicine'];
+				$nature = $row['nature'];
+				$perception = $row['perception'];
+				$performance = $row['performance'];
+				$persuasion = $row['persuasion'];
+				$religion = $row['religion'];
+				$sleight = $row['sleight'];
+				$stealth = $row['stealth'];
+				$survival = $row['survival'];
+				
+				$acrobatics_prof = $row['acrobatics_prof'] ? "*" : "";
+				$animal_prof = $row['animal_prof'] ? "*" : "";
+				$arcana_prof = $row['arcana_prof'] ? "*" : "";
+				$athletics_prof = $row['athletics_prof'] ? "*" : "";
+				$deception_prof = $row['deception_prof'] ? "*" : "";
+				$history_prof = $row['history_prof'] ? "*" : "";
+				$insight_prof = $row['insight_prof'] ? "*" : "";
+				$intimidation_prof = $row['intimidation_prof'] ? "*" : "";
+				$investigation_prof = $row['investigation_prof'] ? "*" : "";
+				$medicine_prof = $row['medicine_prof'] ? "*" : "";
+				$nature_prof = $row['nature_prof'] ? "*" : "";
+				$perception_prof = $row['perception_prof'] ? "*" : "";
+				$performance_prof = $row['performance_prof'] ? "*" : "";
+				$persuasion_prof = $row['persuasion_prof'] ? "*" : "";
+				$religion_prof = $row['religion_prof'] ? "*" : "";
+				$sleight_prof = $row['sleight_prof'] ? "*" : "";
+				$stealth_prof = $row['stealth_prof'] ? "*" : "";
+				$survival_prof = $row['survival_prof'] ? "*" : "";
+				
+				echo "<tr><td>$acrobatics_prof</td><td>$acrobatics</td><td>Acrobatics</td></tr>";
+				echo "<tr><td>$animal_prof</td><td>$animal</td><td>Animal Handling</td></tr>";
+				echo "<tr><td>$arcana_prof</td><td>$arcana</td><td>Arcana</td></tr>";
+				echo "<tr><td>$athletics_prof</td><td>$athletics</td><td>Athletics</td></tr>";				
+				echo "<tr><td>$deception_prof</td><td>$deception</td><td>Deception</td></tr>";
+				echo "<tr><td>$history_prof</td><td>$history</td><td>History</td></tr>";
+				echo "<tr><td>$insight_prof</td><td>$insight</td><td>Insight</td></tr>";
+				echo "<tr><td>$intimidation_prof</td><td>$intimidation</td><td>Intimidation</td></tr>";
+				echo "<tr><td>$investigation_prof</td><td>$investigation</td><td>Investigation</td></tr>";
+				echo "<tr><td>$medicine_prof</td><td>$medicine</td><td>Medicine</td></tr>";
+				echo "<tr><td>$nature_prof</td><td>$nature</td><td>Nature</td></tr>";
+				echo "<tr><td>$perception_prof</td><td>$perception</td><td>Perception</td></tr>";
+				echo "<tr><td>$performance_prof</td><td>$performance</td><td>Performance</td></tr>";
+				echo "<tr><td>$persuasion_prof</td><td>$persuasion</td><td>Persuasion</td></tr>";
+				echo "<tr><td>$religion_prof</td><td>$religion</td><td>Religion</td></tr>";
+				echo "<tr><td>$sleight_prof</td><td>$sleight</td><td>Sleight of Hand</td></tr>";
+				echo "<tr><td>$stealth_prof</td><td>$stealth</td><td>Stealth</td></tr>";
+				echo "<tr><td>$survival_prof</td><td>$survival</td><td>Survival</td></tr>";
+				?>	
+				
 			</table>
 			<br />
 		</td>
