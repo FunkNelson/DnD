@@ -91,12 +91,12 @@
 				$wisdom = $row['wisdom'];
 				$charisma = $row['charisma'];
 				
-				$strength_prof = $row['strength_prof'];
-				$dexterity_prof = $row['dexterity_prof'];
-				$constitution_prof = $row['constitution_prof'];
-				$intelligence_prof = $row['intelligence_prof'];
-				$wisdom_prof = $row['wisdom_prof'];
-				$charisma_prof = $row['charisma_prof'];
+				$strength_prof = $row['strength_prof'] ? "*" : "";
+				$dexterity_prof = $row['dexterity_prof'] ? "*" : "";
+				$constitution_prof = $row['constitution_prof'] ? "*" : "";
+				$intelligence_prof = $row['intelligence_prof'] ? "*" : "";
+				$wisdom_prof = $row['wisdom_prof'] ? "*" : "";
+				$charisma_prof = $row['charisma_prof'] ? "*" : "";
 				
 				echo "<tr><td>$strength_prof</td><td>$strength</td><td>Strength</td></tr>";
 				echo "<tr><td>$dexterity_prof</td><td>$dexterity</td><td>Dexterity</td></tr>";
