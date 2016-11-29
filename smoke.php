@@ -52,18 +52,8 @@
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>				
 			
 				<?php
-				require('db_connection_config_dnd.php');	
-				$db = mysqli_connect($server, $db_username, $db_password, $database);
-	
-				if (mysqli_connect_errno())
-				{
-					echo "Error: Could not connect to database.";
-					echo mysqli_connect_error();
-					exit;
-				}
-				
-				$query = "select * from char_base_stats where char_id = 1";
-				$result = mysqli_query($db, $query);
+				require('db_query.php');					
+				$result = run_query("select * from char_base_stats where char_id = 1");
 				
 				$row = mysqli_fetch_array($result);
 				
@@ -80,9 +70,6 @@
 				echo "<tr><td>$intelligence</td><td>0</td><td>Intelligence</td></tr>";
 				echo "<tr><td>$wisdom</td><td>+1</td><td>Wisdom</td></tr>";
 				echo "<tr><td>$charisma</td><td>+3</td><td>Charisma</td></tr>";
-				
-				$result->free();
-				mysqli_close($db);				
 				?>				
 			</table>  
 			<br />
