@@ -80,9 +80,9 @@
 			
 				<?php
 				require_once('db_query.php');					
-				$result1 = run_query("select * from char_saves where char_id = 1");
+				$result = run_query("select * from char_saves where char_id = 1");
 				
-				$row = mysqli_fetch_array($result1);
+				$row = mysqli_fetch_array($result);
 				
 				$strength = $row['strength'];
 				$dexterity = $row['dexterity'];
@@ -91,12 +91,19 @@
 				$wisdom = $row['wisdom'];
 				$charisma = $row['charisma'];
 				
-				echo "<tr><td></td><td>$strength</td><td>Strength</td></tr>";
-				echo "<tr><td>*</td><td>$dexterity</td><td>Dexterity</td></tr>";
-				echo "<tr><td></td><td>$constitution</td><td>Constitution</td></tr>";
-				echo "<tr><td>*</td><td>$intelligence</td><td>Intelligence</td></tr>";
-				echo "<tr><td></td><td>$wisdom</td><td>Wisdom</td></tr>";
-				echo "<tr><td></td><td>$charisma</td><td>Charisma</td></tr>";
+				$strength_prof = $row['strength_prof'];
+				$dexterity_prof = $row['dexterity_prof'];
+				$constitution_prof = $row['constitution_prof'];
+				$intelligence_prof = $row['intelligence_prof'];
+				$wisdom_prof = $row['wisdom_prof'];
+				$charisma_prof = $row['charisma_prof'];
+				
+				echo "<tr><td>$strength_prof</td><td>$strength</td><td>Strength</td></tr>";
+				echo "<tr><td>$dexterity_prof</td><td>$dexterity</td><td>Dexterity</td></tr>";
+				echo "<tr><td>$constitution_prof</td><td>$constitution</td><td>Constitution</td></tr>";
+				echo "<tr><td>$intelligence_prof</td><td>$intelligence</td><td>Intelligence</td></tr>";
+				echo "<tr><td>$wisdom_prof</td><td>$wisdom</td><td>Wisdom</td></tr>";
+				echo "<tr><td>$charisma_prof</td><td>$charisma</td><td>Charisma</td></tr>";
 				?>				
 				
 			</table>
