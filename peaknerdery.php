@@ -2,16 +2,16 @@
 <head>
 	<title>Peak Nerdery</title>
 	<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
-	<script type='text/javascript' src='Ajax_Example_JavaScript.js'></script>
+	<script type='text/javascript' src='Ajax_JavaScript.js'></script>
 </head>
 <body>
 	<h1 align="center">Peak Nerdery</h1><br />
 	
 	<div id='AjaxResponse'>
-		<input type='button' onclick='AjaxRequest();' value='DERP'/>
+		<input type='button' onclick='AjaxRequest();' value='Roll a die'/>
     </div>
 	
-	
+	<br />
 	<?php
 	require_once('profile_strip.php');
 	$party = array(1, 2, 3, 4);
