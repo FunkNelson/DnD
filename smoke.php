@@ -191,47 +191,59 @@
 	
 	<!-- Middle Column -->
 	<table width="30%" border="0" align="left" colspan="1" cellpadding="5">
-		<tr>
-		<td align="center">
-			<br />
-			<table border="3" cellpadding="5">
-			<tr>
-				<td>Armor Class</td>
-				<td>Initiative</td>
-				<td>Speed</td>
-				<td>Proficiency Bonus</td>
-			</tr>
-			<tr>
-				<td>15</td>
-				<td>+4</td>
-				<td>30</td>
-				<td>+2</td>
-			</tr>
-			</table>
-		</td>
-		</tr>
-		<tr>
-		<td align="center">
-			<br />
-			<table border="3" cellpadding="5">
-			<tr>
-				<td>Passive Wisdom</td>
-				<td>Inspiration</td>
-				<td>Max Hit Points</td>
-				<td>Current Hit Points</td>
-			</tr>
-			<tr>
-				<td>13</td>
-				<td>0</td>
-				<td>27</td>
-				<td>27</td>
-			</tr>
-			</table>
-			<br />
-		</td>
-		</tr>
-
-
+	
+		<?php
+		require_once('db_query.php');
+		$result = run_query("select * from char_base_stats where char_id = 1");
+		
+		$row = mysqli_fetch_array($result);
+		
+		$armor = $row['armor'];
+		$initiative = $row['initiative'];
+		$speed = $row['speed'];
+		$proficiency = $row['proficiency'];
+		$passive_wisdom = $row['passive_wisdom'];
+		$inspiration = $row['inspiration'];
+		$max_hp = $row['max_hp'];
+		$current_hp = $row['current_hp'];
+		
+		echo "<tr>";
+		echo "<td align='center'><br />";
+		
+		echo '<table border="3" cellpadding="5">';
+		
+		echo "<tr>";
+		echo "<td>Armor Class</td>";
+		echo "<td>Initiative</td>";
+		echo "<td>Speed</td>";
+		echo "<td>Proficiency Bonus</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>$armor</td>";
+		echo "<td>$initiative</td>";
+		echo "<td>$speed</td>";
+		echo "<td>$proficiency</td>";
+		echo "</tr>";
+		
+		echo "</table>";
+		echo "</td></tr>";
+		echo '<tr><td align="center"><br />';
+		
+		echo '<table border="3" cellpadding="5">';
+		
+		echo "<tr>";
+		echo "<td>Passive Wisdom</td>";
+		echo "<td>Inspiration</td>";
+		echo "<td>Max Hit Points</td>";
+		echo "<td>Current Hit Points</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>$passive_wisdom</td>";
+		echo "<td>$inspiration</td>";
+		echo "<td>$max_hp</td>";
+		echo "<td>$current_hp</td>";
+		echo "</tr></table><br /></td></tr>";		
+		?>
 		
 		<tr>
 		<td bgcolor="#AED6F1" width="100%" style="border:1px solid black">
