@@ -335,8 +335,7 @@
 					$description = $row['description'];
 					
 					echo "<tr><td>$feature_name</td><td>$description</td></tr>";
-				}
-				
+				}				
 				?>			
 
 			</table>
@@ -347,13 +346,24 @@
 		<tr>
 		<td bgcolor="#EDBB99" width="100%" align="left" style="border:1px solid black">
 			<h2 align="center">Backstory</h2>
-			<table border="3" cellpadding="5" align="center">						
-				<tr><td>Personality</td><td>I am a lifelong gambler that cannot resist taking risks</td></tr>
-				<tr><td>Ideals</td><td>Smoke, much like the honeybadger, don't give a shit</td></tr>
-				<tr><td>Bonds</td><td>I fleeced the wrong person back in the day and now I'm often looking over my shoulder, wary of my potential comeuppance</td></tr>
-				<tr><td>Flaws</td><td>I want all of the things, regardless of their worth or usefulness</td></tr>
-				<tr><td>Obsession</td><td>I am fascinated by mundane objects</td></tr>
-				<tr><td>Quirk</td><td>Greed, hording and kleptomania are pretty quirky</td></tr>
+			<table border="3" cellpadding="5" align="center">
+
+				<?php
+				require_once('db_query.php');
+				$result = run_query("select * from char_attributes where char_id = 1");					
+				$row = mysqli_fetch_array($result);
+				
+				$traits = $row['traits'];
+				$ideas = $row['ideas'];
+				$bonds = $row['bonds'];
+				$flaws = $row['flaws'];
+				
+				echo "<tr><td>Personality</td><td>$traits</td></tr>";
+				echo "<tr><td>Ideals</td><td>$ideas</td></tr>";
+				echo "<tr><td>Bonds</td><td>$bonds</td></tr>";
+				echo "<tr><td>Flaws</td><td>$flaws</td></tr>";							
+				?>
+
 			</table>
 			<br />
 		</td>
