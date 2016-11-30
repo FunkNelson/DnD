@@ -18,10 +18,16 @@ function print_profile($char_id)
 	$alignment = $row['alignment'];
 	$xp = $row['xp'];
 	$level = $row['level'];
+	$image_url = $row['image_url'];
+	$bgcolor = $row['bgcolor'];
+	
+	
+	echo "<table bgcolor=\"$bgcolor\" width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"5\">";
+	
 	
 	//echo $fullname;
 	echo '<tr><td align="center" width="20%">';
-	echo '<img src="http://a819.phobos.apple.com/us/r1000/075/Purple/v4/26/91/b3/2691b398-ad8b-8460-d2b4-130f901218e2/mza_7357829886999610302.png"'; echo 'width="30%" height="10%"></td>';
+	echo "<img src=\"$image_url\" /></td>";
 	
 	
 	//display full player name
@@ -45,6 +51,6 @@ function print_profile($char_id)
 	echo "<td>$xp</td>";
 	echo "<td>$level</td>";
 	
-	echo "</tr></table></td></tr>";			
+	echo "</tr></table></td></tr></table>";			
 }
 ?>

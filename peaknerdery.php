@@ -6,7 +6,7 @@
 <body>
 
 	<!-- Profile 1 -->
-	<table bgcolor="#000000" width="100%" border="0" align="center" cellpadding="5">
+	
 
 		
 		<?php
@@ -21,7 +21,7 @@
 		?>
 		
 		
-	</table>	
+	
 	
 </body>
 </html>
