@@ -292,16 +292,22 @@
 		<td bgcolor="#F7FCAB" width="100%" style="border:1px solid black">
 			<h2 align="center">Equipment</h2>
 			<table border="3" align="center" cellpadding="5">	
-				<tr><td>Amount</td><td>Item</td></tr>
-				<tr><td>4</td><td>Health Potion</td></tr>
-				<tr><td>120</td><td>Arrows</td></tr>
-				<tr><td>75</td><td>Copper Pieces</td></tr>
-				<tr><td>9</td><td>Silver Pieces</td></tr>
-				<tr><td>32</td><td>Gold Pieces</td></tr>
-				<tr><td>1</td><td>Disguise Kit</td></tr>
-				<tr><td>1</td><td>Set of Fine Clothes</td></tr>
-				<tr><td>1</td><td>Burglars' Pack</td></tr>
-				<tr><td>1</td><td>Weighted Die</td></tr>
+			
+				<?php
+				require_once('db_query.php');
+				$result = run_query("select * from equipment where char_id = 1");	
+				
+				echo "<tr><td>Amount</td><td>Item</td></tr>";
+				
+				while ($row = mysqli_fetch_array($result))
+				{
+					$amount = $row['amount'];
+					$item = $row['item'];
+
+					echo "<tr><td>$amount</td><td>$item</td></tr>";
+				}
+				?>
+		
 			</table>
 			<br />
 		</td>
