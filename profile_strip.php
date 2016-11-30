@@ -22,7 +22,7 @@ function print_profile($char_id)
 	$bgcolor = $row['bgcolor'];
 	
 	
-	echo "<table bgcolor=\"$bgcolor\" width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"5\">";
+	echo "<table bgcolor=\"$bgcolor\" width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"5\" style=\"border:1px solid black\">";
 	
 	
 	//echo $fullname;
