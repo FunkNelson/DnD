@@ -322,15 +322,23 @@
 		<td bgcolor="#F1948A" width="100%" align="left" style="border:1px solid black">
 			<h2 align="center">Features and Traits</h2>
 			<table border="3" cellpadding="5">
-				<tr><td>Name</td><td>Description</td></tr>
-				<tr><td>Thieves' Tools</td><td>This set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any Ability Checks you make to disarm traps or open locks.</td></tr>
-				<tr><td>Thieves Cant</td><td>A secret mix of dialect, jargon and code allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves' cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly.  In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.</td></tr>
-				<tr><td>Darkvision</td><td>You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</td></tr>
-				<tr><td>Feline Agility</td><td>Double speed when moving once during combat.  Recharges after spending one combat turn without moving.</td></tr>
-				<tr><td>Cat Claws</td><td>Climbing speed of 20 feet.  Unarmed claw attack (1 d4 +Strength bonus)</td></tr>
-				<tr><td>Cunning Action</td><td>Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a Bonus Action on each of your turns in Combat. This action can be used only to take the Dash, Disengage, or Hide action.</td></tr>
-				<tr><td>Fast Hands</td><td>You can use the Bonus Action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves’ tools to disarm a trap or open a lock, or take the Use an Object action.</td></tr>
-				<tr><td>Second-Story Work</td><td>You gain the ability to climb faster than normal; climbing no longer costs you extra Movement.  In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier.</td></tr>
+			
+				<?php
+				require_once('db_query.php');
+				$result = run_query("select * from features where char_id = 1");	
+				
+				echo "<tr><td>Name</td><td>Description</td></tr>";
+				
+				while ($row = mysqli_fetch_array($result))
+				{
+					$feature_name = $row['feature_name'];
+					$description = $row['description'];
+					
+					echo "<tr><td>$feature_name</td><td>$description</td></tr>";
+				}
+				
+				?>			
+
 			</table>
 			<br />
 		</td>
