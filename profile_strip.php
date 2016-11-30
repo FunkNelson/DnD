@@ -20,9 +20,10 @@ function print_profile($char_id)
 	$level = $row['level'];
 	$image_url = $row['image_url'];
 	$bgcolor = $row['bgcolor'];
+	$profile_url = $row['profile_url'];
 	
 	
-	echo "<table bgcolor=\"$bgcolor\" width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"5\" style=\"border:1px solid black\">";
+	echo "<a href=\"$profile_url\"><table bgcolor=\"$bgcolor\" width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"5\" style=\"border:1px solid black\">";
 	
 	
 	//echo $fullname;
@@ -51,6 +52,6 @@ function print_profile($char_id)
 	echo "<td>$xp</td>";
 	echo "<td>$level</td>";
 	
-	echo "</tr></table></td></tr></table>";			
+	echo "</tr></table></td></tr></table></a>";			
 }
 ?>
