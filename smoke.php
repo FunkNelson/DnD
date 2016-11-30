@@ -56,44 +56,6 @@
 		
 		?>
 		
-		<!--
-		<td align="left" width="30%">		
-			<h1 style="color:#FFFFFF">Smoking Mirror</h1>
-		</td>
-		<td align="left" width="50%">
-			<table border="3" align="left" bgcolor=#FFFFFF cellpadding="5">	
-				<tr bgcolor="#aaa">
-					<td>Nickname</td>
-					<td>Class</td>
-					<td>Race</td>
-					<td>Background</td>
-					<td>Archetype</td>
-					<td>Alignment</td>
-					<td>XP</td>
-					<td>Level</td>					
-				</tr>
-				<tr>
-					<td>Smoke</td>		
-					<td>Rogue</td>
-					<td>Tabaxi</td>
-					<td>Charlatan</td>
-					<td>Thief</td>
-					<td>Chaotic Neutral</td>
-					<td>4753</td>
-					<td>4</td>	
-				</tr>
-			</table>
-		</td>
-		
-		-->
-		
-		
-		
-		
-		
-		
-		
-		
 		</tr>
 	</table>
 	
@@ -125,7 +87,8 @@
 				echo "<tr><td>$intelligence</td><td>0</td><td>Intelligence</td></tr>";
 				echo "<tr><td>$wisdom</td><td>+1</td><td>Wisdom</td></tr>";
 				echo "<tr><td>$charisma</td><td>+3</td><td>Charisma</td></tr>";
-				?>				
+				?>	
+				
 			</table>  
 			<br />
 		</td>
@@ -249,8 +212,7 @@
 	
 		<?php
 		require_once('db_query.php');
-		$result = run_query("select * from char_base_stats where char_id = 1");
-		
+		$result = run_query("select * from char_base_stats where char_id = 1");		
 		$row = mysqli_fetch_array($result);
 		
 		$armor = $row['armor'];
@@ -304,12 +266,23 @@
 		<td bgcolor="#AED6F1" width="100%" style="border:1px solid black">
 			<h2 align="center">Attacks</h2>
 			<table border="3" cellpadding="5">	
-				<tr><td>Name</td><td>Attack Bonus</td><td>Attack Type</td><td>Damage Type</td></tr>
-				<tr><td>Hand Crossbow x2</td><td>+5</td><td>Ranged, Piercing</td><td>1 d6 +3</td></tr>
-				<tr><td>Shortsword</td><td>+6</td><td>Melee</td><td>1 d6 +4</td></tr>
-				<tr><td>Dagger</td><td>+6</td><td>Melee</td><td>1 d4 +4</td></tr>
-				<tr><td>Claws</td><td>0</td><td>Unarmed Melee</td><td>1 d4 +Str</td></tr>
-				<tr><td>Sneak</td><td>0</td><td>Party Member Is Adjacent</td><td>+2 d6</td></tr>
+			
+				<?php
+				require_once('db_query.php');
+				$result = run_query("select * from attacks where char_id = 1");		
+				
+				echo "<tr><td>Name</td><td>Attack Bonus</td><td>Attack Type</td><td>Damage Type</td></tr>";
+				
+				while ($row = mysqli_fetch_array($result))
+				{
+					$attack_name = $row['attack_name'];
+					$attack_bonus = $row['attack_bonus'];
+					$attack_type = $row['attack_type'];
+					$damage_type = $row['damage_type'];
+					
+					echo "<tr><td>$attack_name</td><td>$attack_bonus</td><td>$attack_type</td><td>$damage_type</td></tr>";
+				}
+				?>
 			</table>
 			<br />
 		</td>
