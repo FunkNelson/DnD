@@ -8,7 +8,7 @@
 	<h1 align="center">Peak Nerdery</h1><br />
 	
 	<div id='AjaxResponse'>
-		<input type='button' onclick='AjaxRequest();' value='Roll a die'/>
+		<input type='button' onclick='AjaxRequest();' value='Roll a d6'/>
     </div>
 	
 	<br />
