@@ -8,8 +8,10 @@
 	<h1 align="center">Peak Nerdery</h1><br />
 	
 	<div id='AjaxResponse'>
-		<input type='button' onclick='AjaxRequest();' value='Roll a d6'/>
-    </div>
+		<input type='button' onclick='AjaxRequest();' value='Roll a d6'/>   
+	</div>
+	
+    
 	
 	<br />
 	<?php

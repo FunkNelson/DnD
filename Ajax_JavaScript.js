@@ -57,6 +57,6 @@ function AjaxRequest2()
       HandleResponse(xmlHttp.responseText);
     }
   }
-  xmlHttp.open("GET", "original.php", true);
-  xmlHttp.send(null);
+  xmlHttp.open("GET", "roll_dice.php", true);
+  xmlHttp.send(20);
 }
