@@ -150,10 +150,12 @@
 				?>	
 				
 			</table>
-			<br />
-		</td>
+			<br />			
+		</td>		
 		</tr>
+		<tr><td><a href="http://www.funknelson.com/peaknerdery.php">Go back to the party page</a></td></tr>
 	</table>
+	
 	
 
 	
