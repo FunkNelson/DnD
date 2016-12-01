@@ -1,6 +1,6 @@
 <?php
 //echo "<input type='button' onclick='AjaxRequest();' value='Roll a d6'/><br />";
-echo "<button name='d6' onclick='AjaxRequest();' type='submit' value='6'>Roll a d6</button>";
+echo "<button name='d6' onclick='AjaxRequest();' type='submit' value='6'><img src=\"http://i.imgur.com/6OuEBBp.png\"></button><br />";
 echo roll_die(6);
 
 

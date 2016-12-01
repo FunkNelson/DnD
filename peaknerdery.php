@@ -7,13 +7,9 @@
 <body>
 	<h1 align="center">Peak Nerdery</h1><br />
 	
-	<!--
-	<div id='AjaxResponse'>
-		<input type='button' onclick='AjaxRequest();' value='Roll a d6'/>   
-	</div>
-	-->
-	<div id='AjaxResponse'>
-		<button name="d6" onclick='AjaxRequest();' type="submit" value="6">Roll a d6</button>
+
+	<div align="center" id='AjaxResponse'>
+		<button name="d6" onclick='AjaxRequest();' type="submit" value="6"><img src="http://i.imgur.com/6OuEBBp.png"></button>
 	</div>
     
 	
