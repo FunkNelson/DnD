@@ -154,6 +154,7 @@
 			<br />
 		</td>
 		</tr>
+		<tr><td><a href="http://www.funknelson.com/peaknerdery.php">Go back to the party page</a></td></tr>
 	</table>
 	
 
@@ -218,7 +219,7 @@
 		<tr>
 		<td bgcolor="#AED6F1" width="100%" style="border:1px solid black">
 			<h2 align="center">Attacks</h2>
-			<table border="3" cellpadding="5">	
+			<table align="center" border="3" cellpadding="5">	
 			
 				<?php
 				require_once('db_query.php');
@@ -278,7 +279,7 @@
 			
 				<?php
 				require_once('db_query.php');
-				$result = run_query("select * from features where char_id = 4");	
+				$result = run_query("select distinct f.feature_name, f.description from features f, char_features cf where f.feat_id = cf.feat_id and cf.char_id = 4");	
 				
 				echo "<tr><td>Name</td><td>Description</td></tr>";
 				
