@@ -5,11 +5,9 @@
 	<script type='text/javascript' src='Ajax_JavaScript.js'></script>
 </head>
 <body>
-	<h1 align="center">Peak Nerdery</h1><br />
-	
 
 	<div align="center" id='AjaxResponse'>
-		<button name="d6" onclick='AjaxRequest();' type="submit" value="6"><img src="http://i.imgur.com/6OuEBBp.png"></button>
+		<button name="d2-" onclick='AjaxRequest();' type="submit" value="20"><img src="http://i.imgur.com/6OuEBBp.png"></button>
 	</div>
     
 	
