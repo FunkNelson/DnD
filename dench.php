@@ -276,7 +276,7 @@
 			
 				<?php
 				require_once('db_query.php');
-				$result = run_query("select * from features where char_id = 3");	
+				$result = run_query("select distinct f.feature_name, f.description from features f, char_features cf where f.feat_id = cf.feat_id and cf.char_id = 3");	
 				
 				echo "<tr><td>Name</td><td>Description</td></tr>";
 				
