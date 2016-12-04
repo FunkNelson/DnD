@@ -15,4 +15,17 @@ function run_query($query) {
 	mysqli_close($db);
 	return $result;
 }
+
+function get_active_heros() 
+{	
+	$result = run_query("select distinct char_id from char_attributes where is_active = 1 order by char_id");	
+	$party = array();
+	
+	while($row = mysqli_fetch_assoc($result))
+	{
+		$party[] = $row['char_id'];
+	}
+	
+	return $party;
+}
 ?>	

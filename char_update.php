@@ -13,6 +13,30 @@
 	
 	<form action="placeholder.php" method="post">
 		<table border="0" class="center">
+			<tr>
+				<td align="right">Character</td>
+				<td><select name="char">
+					<option value = "nothing">Choose</option>
+					<?php
+					require_once('db_query.php');
+					//$party = get_active_heros();
+					$result = run_query("select char_id, name from char_attributes where is_active = 1 order by char_id");
+					$party = array();
+					
+					while ($row = mysqli_fetch_assoc($result))
+					{
+						$party[] = $row['name'];
+					}
+					
+					foreach ($party as $hero)
+					{							
+						echo "<option value = '$hero'>$hero</option>";
+					}					
+					
+					?>
+					</select>
+				</td>
+			</tr>
 		</table>
 	</form>
 	
