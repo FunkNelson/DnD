@@ -50,6 +50,12 @@
 			echo "<option value = 'current_hp'>Current Hit Points</option>";
 			
 			echo "</select></td></tr>";
+			
+			
+			//new value
+			
+			echo "<tr><td align='right'>New value</td>";
+			echo "<td><input type='number' name='new_value' min='0' max='1000' /></td></tr>"
 			?>
 			
 			
