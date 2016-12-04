@@ -31,8 +31,10 @@
 	}
 
 	echo "<br />";
-
-	
+   
+    
+	//map column
+	echo "<table width='30%' border='0' align='left' cellpadding='5'>";
 	echo "<h1 align='center'>Maps</h1>";	
 	
 	$maps = run_query("select * from maps order by map_id");
@@ -45,7 +47,29 @@
 		
 		echo "<p align='center'><a href='$map_url'>$map_name</a></p>";		
 	}	
+	echo "</table>";
+	
+	
+	//documents columns
+	echo "<table width='30%' border='0' align='center' cellpadding='5'>";
+	echo "<h1 align='center'>Documents and Letters</h1>";
+	
+	$docs = run_query("select * from documents order by doc_id");
+	$doc_array = array();
+	
+	while($row = mysqli_fetch_assoc($docs))
+	{	
+		$doc_url = $row['doc_url'];
+		$doc_name = $row['doc_name'];
+		
+		echo "<p align='center'><a href='$doc_url'>$doc_name</a></p>";		
+	}	
+	echo "</table>";
+	
+	
+	
 	?>
+	
 	
 
 </body>
