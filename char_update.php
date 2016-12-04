@@ -13,30 +13,46 @@
 	
 	<form action="placeholder.php" method="post">
 		<table border="0" class="center">
-			<tr>
-				<td align="right">Character</td>
-				<td><select name="char">
-					<option value = "nothing">Choose</option>
-					<?php
-					require_once('db_query.php');
-					//$party = get_active_heros();
-					$result = run_query("select char_id, name from char_attributes where is_active = 1 order by char_id");
-					$party = array();
-					
-					while ($row = mysqli_fetch_assoc($result))
-					{
-						$party[] = $row['name'];
-					}
-					
-					foreach ($party as $hero)
-					{							
-						echo "<option value = '$hero'>$hero</option>";
-					}					
-					
-					?>
-					</select>
-				</td>
-			</tr>
+			<?php
+			require_once('db_query.php');
+			//$party = get_active_heros();
+			$result = run_query("select char_id, name from char_attributes where is_active = 1 order by char_id");
+			$party = array();
+			
+			while ($row = mysqli_fetch_assoc($result))
+			{
+				$party[] = $row['name'];
+			}
+			
+			//character
+			echo "<tr><td align='right'>Character</td><td><select name='char'>";
+			echo "<option value = 'nothing'>Choose</option>";
+			
+			foreach ($party as $hero)
+			{							
+				echo "<option value = '$hero'>$hero</option>";
+			}			
+			
+			echo "</select></td></tr>";
+			
+			
+			//attributes
+			echo "<tr><td align='right'>Attribute</td><td><select name='attrib'>";
+			echo "<option value = 'nothing'>Choose</option>";
+			
+			echo "<option value = 'ac'>Armor Class</option>";
+			echo "<option value = 'init'>Initiative</option>";
+			echo "<option value = 'speed'>Speed</option>";
+			echo "<option value = 'prof'>Proficiency Bonus</option>";
+			echo "<option value = 'pw'>Passive Wisdom</option>";
+			echo "<option value = 'insp'>Inspiration</option>";
+			echo "<option value = 'max_hp'>Max Hit Points</option>";
+			echo "<option value = 'current_hp'>Current Hit Points</option>";
+			
+			echo "</select></td></tr>";
+			?>
+			
+			
 		</table>
 	</form>
 	
