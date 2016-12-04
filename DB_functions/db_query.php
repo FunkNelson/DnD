@@ -1,6 +1,6 @@
 <?php
 function run_query($query) {
-	require('db_connection_config_dnd.php');
+	require('/var/www/html/DB_functions/db_connection_config_dnd.php');
 	
 	$db = mysqli_connect($server, $db_username, $db_password, $database);
 
@@ -31,7 +31,7 @@ function get_active_heros()
 
 function update_value($query)
 {
-	require('db_connection_config_dnd.php');
+	require('/var/www/html/DB_functions/db_connection_config_dnd.php');
 	
 	$db = mysqli_connect($server, $db_username_w, $db_password_w, $database);
 	
