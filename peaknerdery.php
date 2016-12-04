@@ -40,7 +40,7 @@
 	$maps = run_query("select * from maps order by map_id");
 	$map_array = array();
 	
-	while($row = mysqli_fetch_assoc($maps))
+	while ($row = mysqli_fetch_assoc($maps))
 	{	
 		$map_url = $row['map_url'];
 		$map_name = $row['map_name'];
@@ -57,7 +57,7 @@
 	$docs = run_query("select * from documents order by doc_id");
 	$doc_array = array();
 	
-	while($row = mysqli_fetch_assoc($docs))
+	while ($row = mysqli_fetch_assoc($docs))
 	{	
 		$doc_url = $row['doc_url'];
 		$doc_name = $row['doc_name'];
@@ -67,7 +67,27 @@
 	echo "</table>";
 	
 	
+	//group loot
+	echo "<table width='30%' border='0' align='left' cellpadding='5'>";
+	echo "<h1 align='center'>Party Loot</h1>";
 	
+	$loot = run_query("select * from loot order by loot_id");
+	$loot_array = array();
+	
+	echo "<table align='center' border='3' cellpadding='5'>";
+	echo "<tr><td>Amount</td><td>Item</td><td>GP Value</td></tr>";
+	
+	while ($row = mysqli_fetch_assoc($loot))
+	{
+		$loot_amount = $row['loot_amount'];
+		$loot_name = $row['loot_name'];
+		$loot_gp_value = $row['loot_gp_value'];
+		
+		echo "<tr><td>$loot_amount</td><td>$loot_name</td><td>$loot_gp_value</td></tr>";	
+	}
+
+	echo "</table>";
+	echo "</table>";
 	?>
 	
 	
