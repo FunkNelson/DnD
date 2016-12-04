@@ -15,8 +15,8 @@
 	<?php
 	
 	//profile strips
-	require('profile_strip.php');
-	require('db_query.php');
+	require('/var/www/html/profile_strip.php');
+	require('/var/www/html/DB_functions/db_query.php');
 	
 	$query = "select distinct char_id from char_attributes where is_active = 1 order by char_id";
 	$result = run_query($query);	

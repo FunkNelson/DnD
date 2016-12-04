@@ -8,7 +8,7 @@
 
 	<!-- Header -->
 	<?php
-	require_once('profile_strip.php');
+	require_once('/var/www/html/profile_strip.php');
 	print_profile(2);
 	?>	
 
@@ -21,7 +21,7 @@
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>				
 			
 				<?php
-				require_once('db_query.php');					
+				require_once('/var/www/html/DB_functions/db_query.php');					
 				$result = run_query("select * from char_base_stats where char_id = 2");
 				
 				$row = mysqli_fetch_array($result);
@@ -49,7 +49,7 @@
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
 			
 				<?php
-				require_once('db_query.php');					
+				require_once('/var/www/html/DB_functions/db_query.php');					
 				$result = run_query("select * from char_saves where char_id = 2");
 				
 				$row = mysqli_fetch_array($result);
@@ -86,7 +86,7 @@
 			<table border="3" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
 			
 				<?php
-				require_once('db_query.php');					
+				require_once('/var/www/html/DB_functions/db_query.php');					
 				$result = run_query("select * from char_skills where char_id = 2");
 				
 				$row = mysqli_fetch_array($result);
@@ -164,7 +164,7 @@
 	<table width="30%" border="0" align="left" colspan="1" cellpadding="5">
 	
 		<?php
-		require_once('db_query.php');
+		require_once('/var/www/html/DB_functions/db_query.php');
 		$result = run_query("select * from char_base_stats where char_id = 2");		
 		$row = mysqli_fetch_array($result);
 		
@@ -221,7 +221,7 @@
 			<table align="center" border="3" cellpadding="5">	
 			
 				<?php
-				require_once('db_query.php');
+				require_once('/var/www/html/DB_functions/db_query.php');
 				$result = run_query("select * from attacks where char_id = 2");		
 				
 				echo "<tr><td>Name</td><td>Attack Bonus</td><td>Attack Type</td><td>Damage Type</td></tr>";
@@ -247,7 +247,7 @@
 			<table border="3" align="center" cellpadding="5">	
 			
 				<?php
-				require_once('db_query.php');
+				require_once('/var/www/html/DB_functions/db_query.php');
 				$result = run_query("select * from equipment where char_id = 2");	
 				
 				echo "<tr><td>Amount</td><td>Item</td></tr>";
@@ -277,7 +277,7 @@
 			<table border="3" cellpadding="5">
 			
 				<?php
-				require_once('db_query.php');
+				require_once('/var/www/html/DB_functions/db_query.php');
 				$result = run_query("select distinct f.feature_name, f.description from features f, char_features cf where f.feat_id = cf.feat_id and cf.char_id = 2");	
 				
 				echo "<tr><td>Name</td><td>Description</td></tr>";
@@ -302,7 +302,7 @@
 			<table border="3" cellpadding="5" align="center">
 
 				<?php
-				require_once('db_query.php');
+				require_once('/var/www/html/DB_functions/db_query.php');
 				$result = run_query("select * from char_attributes where char_id = 2");					
 				$row = mysqli_fetch_array($result);
 				

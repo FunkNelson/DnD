@@ -1,7 +1,7 @@
 <?php
 function print_profile($char_id) 
 {
-	require_once('db_query.php');
+	require_once('/var/www/html/DB_functions/db_query.php');
 	
 	$query = "select * from char_attributes where char_id = " . $char_id;
 	$result = run_query($query);
