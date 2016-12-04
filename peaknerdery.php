@@ -9,10 +9,12 @@
 	<!-- d20 -->
 	<div align="center" id='AjaxResponse'>
 		<button name="d2-" onclick='AjaxRequest();' type="submit" value="20"><img src="http://i.imgur.com/6OuEBBp.png"></button>
-	</div>    
-	
+	</div>    	
 	<br />
+	
 	<?php
+	
+	//profile strips
 	require('profile_strip.php');
 	require('db_query.php');
 	
@@ -29,12 +31,15 @@
 	{
 		print_profile($hero);
 	}
-
 	echo "<br />";
    
     
+	echo "<table width='100%' align='center'><tr>";
+	
+	
 	//map column
-	echo "<table width='30%' border='0' align='left' cellpadding='5'>";
+	echo "<table width='30%' border='0' align='left' colspan='1' cellpadding='5'>";
+	echo "<tr><td bgcolor='#F1948A' width='100%' align='left' style='border:1px solid black'>";
 	echo "<h1 align='center'>Maps</h1>";	
 	
 	$maps = run_query("select * from maps order by map_id");
@@ -47,28 +52,13 @@
 		
 		echo "<p align='center'><a href='$map_url'>$map_name</a></p>";		
 	}	
-	echo "</table>";
+	echo "<br /></td></tr></table>";
 	
-	
-	//documents columns
-	echo "<table width='30%' border='0' align='center' cellpadding='5'>";
-	echo "<h1 align='center'>Documents and Letters</h1>";
-	
-	$docs = run_query("select * from documents order by doc_id");
-	$doc_array = array();
-	
-	while ($row = mysqli_fetch_assoc($docs))
-	{	
-		$doc_url = $row['doc_url'];
-		$doc_name = $row['doc_name'];
-		
-		echo "<p align='center'><a href='$doc_url'>$doc_name</a></p>";		
-	}	
-	echo "</table>";
 	
 	
 	//group loot
-	echo "<table width='30%' border='0' align='left' cellpadding='5'>";
+	echo "<table width='40%' border='0' align='left' colspan='1' cellpadding='5'>";
+	echo "<tr><td width='100%' align='left'>";
 	echo "<h1 align='center'>Party Loot</h1>";
 	
 	$loot = run_query("select * from loot order by loot_id");
@@ -87,7 +77,30 @@
 	}
 
 	echo "</table>";
-	echo "</table>";
+	echo "<br /></td></tr></table>";
+	
+	
+	
+	
+	
+	//documents columns
+	echo "<table width='30%' border='0' align='left' colspan='1' cellpadding='5'>";
+	echo "<tr><td bgcolor='#F7FCAB' width='100%' align='left' style='border:1px solid black'>";
+	echo "<h1 align='center'>Documents and Letters</h1>";
+	
+	$docs = run_query("select * from documents order by doc_id");
+	$doc_array = array();
+	
+	while ($row = mysqli_fetch_assoc($docs))
+	{	
+		$doc_url = $row['doc_url'];
+		$doc_name = $row['doc_name'];
+		
+		echo "<p align='center'><a href='$doc_url'>$doc_name</a></p>";		
+	}	
+	echo "<br /></td></tr></table>";
+	
+	echo "</tr></table>";
 	?>
 	
 	
