@@ -28,4 +28,33 @@ function get_active_heros()
 	
 	return $party;
 }
+
+function update_value($query)
+{
+	require('db_connection_config_dnd.php');
+	
+	$db = mysqli_connect($server, $db_username_w, $db_password_w, $database);
+	
+	if (mysqli_connect_errno())
+	{
+		echo "Error: Could not connect to database.";
+		echo mysqli_connect_error();
+		exit;
+	}
+	
+	$result = mysqli_query($db, $query) or die(mysqli_error($db));
+	
+	if ($result)
+	{
+		echo "New value successfully uploaded.<br />";
+	}
+	else
+	{
+		echo $query;
+		echo "Error: derp.<br />";
+	}
+	
+	echo '<a href="../char_update.php">Back</a><br />';
+	mysqli_close($db);
+}
 ?>	
