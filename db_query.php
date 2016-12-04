@@ -11,7 +11,7 @@ function run_query($query) {
 		exit;
 	}
 	
-	$result = mysqli_query($db, $query);
+	$result = mysqli_query($db, $query) or die(mysqli_error($db));
 	mysqli_close($db);
 	return $result;
 }

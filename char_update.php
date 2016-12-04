@@ -59,20 +59,11 @@
 			
 			
 			//submit buttom
-			echo "<tr><td colspan='2' align='center'><input type='submit' value='Submit' /></td></tr>";
-			
+			echo "<tr><td colspan='2' align='center'><input type='submit' value='Submit' /></td></tr>";			
 			?>
 			
 			<tr><td><a href="http://www.funknelson.com/peaknerdery.php">Go back to the party page</a></td></tr>
 		</table>
-	</form>
-	
-	
-
-	
-	
-	
-	
-	
+	</form>	
 </body>
 </html>
