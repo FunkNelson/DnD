@@ -178,13 +178,18 @@
 		$inspiration = $row['inspiration'];
 		$max_hp = $row['max_hp'];
 		$current_hp = $row['current_hp'];
+		$hit_dice_total = $row['hit_dice_total'];
+		$hit_dice_available = $row['hit_dice_available'];
+		$hit_dice_max = $row['hit_dice_max'];
+		$feat_points = $row['feat_points'];
 		
 		echo "<tr>";
 		echo "<td align='center'><br />";
 		
+		//table 1
 		echo '<table border="3" cellpadding="5">';
 		
-		echo "<tr>";
+		echo '<tr bgcolor="#aaa">';
 		echo "<td>Armor Class</td>";
 		echo "<td>Initiative</td>";
 		echo "<td>Speed</td>";
@@ -199,11 +204,12 @@
 		
 		echo "</table>";
 		echo "</td></tr>";
-		echo '<tr><td align="center"><br />';
 		
+		//table 2
+		echo '<tr><td align="center"><br />';
 		echo '<table border="3" cellpadding="5">';
 		
-		echo "<tr>";
+		echo '<tr bgcolor="#aaa">';
 		echo "<td>Passive Wisdom</td>";
 		echo "<td>Inspiration</td>";
 		echo "<td>Max Hit Points</td>";
@@ -214,7 +220,25 @@
 		echo "<td>$inspiration</td>";
 		echo "<td>$max_hp</td>";
 		echo "<td>$current_hp</td>";
-		echo "</tr></table><br /></td></tr>";		
+		echo "</tr></table></td></tr>";		
+		
+		
+		//table 3
+		echo '<tr><td align="center"><br />';
+		echo '<table border="3" cellpadding="5">';
+		
+		echo '<tr bgcolor="#aaa">';
+		echo "<td>Hit Dice</td>";
+		echo "<td>Hit Dice Available</td>";
+		echo "<td>Hit Dice Max</td>";
+		echo "<td>Feat Points</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>$hit_dice_total</td>";
+		echo "<td>$hit_dice_available</td>";
+		echo "<td>$hit_dice_max</td>";
+		echo "<td>$feat_points</td>";
+		echo "</tr></table><br /></td></tr>";
 		?>
 		
 		<tr>
