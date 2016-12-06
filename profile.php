@@ -1,15 +1,15 @@
 <html>
 <head>
-  <title>Wiglaf</title>
+  <title>Player Profile</title>
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
 </head>
 <body>
 
-
 	<!-- Header -->
 	<?php
 	require_once('/var/www/html/profile_strip.php');
-	print_profile(4);
+	$player_id = $_GET['playerid'];
+	print_profile($player_id);
 	?>	
 	
 
@@ -23,7 +23,7 @@
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');					
-				$result = run_query("select * from char_base_stats where char_id = 4");
+				$result = run_query("select * from char_base_stats where char_id = " . $player_id);
 				
 				$row = mysqli_fetch_array($result);
 				
@@ -45,13 +45,15 @@
 			</table>  
 			<br />
 		</td>
+		
+		
 		<td bgcolor="#aaa" width="50%" align="left" style="border:1px solid black">
 			<h2 align="center">Saving Throws</h2>
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');					
-				$result = run_query("select * from char_saves where char_id = 4");
+				$result = run_query("select * from char_saves where char_id = " . $player_id);
 				
 				$row = mysqli_fetch_array($result);
 				
@@ -81,6 +83,8 @@
 			<br />				
 		</td>
 		</tr>
+		
+		<!-- Skills -->
 		<tr>
 		<td bgcolor="#b5dcb3" width="100%" align="left" colspan="2" style="border:1px solid black">
 			<h2 align="center">Skills</h2>
@@ -88,7 +92,7 @@
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');					
-				$result = run_query("select * from char_skills where char_id = 4");
+				$result = run_query("select * from char_skills where char_id = " . $player_id);
 				
 				$row = mysqli_fetch_array($result);
 				
@@ -151,11 +155,38 @@
 				?>	
 				
 			</table>
-			<br />
+			<br />			
+		</td>		
+		</tr>
+		
+		<!-- Languages and Proficiencies -->
+		<tr>
+		<td bgcolor="#B9D1E6" width="100%" align="left" colspan="2" style="border:1px solid black">
+		
+			<h2 align="center">Languages and Proficiencies</h2>
+			
+				<?php
+				require_once('/var/www/html/DB_functions/db_query.php');					
+				
+				$result = run_query("select * from languages where char_id = " . $player_id . " order by lang_id");
+				
+				while ($row = mysqli_fetch_array($result))
+				{
+					$lang = $row['lang'];
+					
+					echo "<p align='center'>$lang</p>";
+				}
+				
+				?>	
+			<br />	
 		</td>
 		</tr>
+		
+			
+			
 		<tr><td><a href="http://www.funknelson.com/peaknerdery.php">Go back to the party page</a></td></tr>
 	</table>
+	
 	
 
 	
@@ -166,7 +197,7 @@
 	
 		<?php
 		require_once('/var/www/html/DB_functions/db_query.php');
-		$result = run_query("select * from char_base_stats where char_id = 4");		
+		$result = run_query("select * from char_base_stats where char_id = " . $player_id);		
 		$row = mysqli_fetch_array($result);
 		
 		$armor = $row['armor'];
@@ -177,13 +208,18 @@
 		$inspiration = $row['inspiration'];
 		$max_hp = $row['max_hp'];
 		$current_hp = $row['current_hp'];
+		$hit_dice_total = $row['hit_dice_total'];
+		$hit_dice_available = $row['hit_dice_available'];
+		$hit_dice_max = $row['hit_dice_max'];
+		$feat_points = $row['feat_points'];
 		
 		echo "<tr>";
 		echo "<td align='center'><br />";
 		
+		//table 1
 		echo '<table border="3" cellpadding="5">';
 		
-		echo "<tr>";
+		echo '<tr bgcolor="#aaa">';
 		echo "<td>Armor Class</td>";
 		echo "<td>Initiative</td>";
 		echo "<td>Speed</td>";
@@ -198,11 +234,12 @@
 		
 		echo "</table>";
 		echo "</td></tr>";
-		echo '<tr><td align="center"><br />';
 		
+		//table 2
+		echo '<tr><td align="center"><br />';
 		echo '<table border="3" cellpadding="5">';
 		
-		echo "<tr>";
+		echo '<tr bgcolor="#aaa">';
 		echo "<td>Passive Wisdom</td>";
 		echo "<td>Inspiration</td>";
 		echo "<td>Max Hit Points</td>";
@@ -213,7 +250,25 @@
 		echo "<td>$inspiration</td>";
 		echo "<td>$max_hp</td>";
 		echo "<td>$current_hp</td>";
-		echo "</tr></table><br /></td></tr>";		
+		echo "</tr></table></td></tr>";		
+		
+		
+		//table 3
+		echo '<tr><td align="center"><br />';
+		echo '<table border="3" cellpadding="5">';
+		
+		echo '<tr bgcolor="#aaa">';
+		echo "<td>Hit Dice</td>";
+		echo "<td>Hit Dice Available</td>";
+		echo "<td>Hit Dice Max</td>";
+		echo "<td>Feat Points</td>";
+		echo "</tr>";
+		echo "<tr>";
+		echo "<td>$hit_dice_total</td>";
+		echo "<td>$hit_dice_available</td>";
+		echo "<td>$hit_dice_max</td>";
+		echo "<td>$feat_points</td>";
+		echo "</tr></table><br /></td></tr>";
 		?>
 		
 		<tr>
@@ -223,7 +278,7 @@
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');
-				$result = run_query("select * from attacks where char_id = 4");		
+				$result = run_query("select * from attacks where char_id = " . $player_id);		
 				
 				echo "<tr><td>Name</td><td>Attack Bonus</td><td>Attack Type</td><td>Damage Type</td></tr>";
 				
@@ -249,7 +304,7 @@
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');
-				$result = run_query("select * from equipment where char_id = 4");	
+				$result = run_query("select * from equipment where char_id = " . $player_id);	
 				
 				echo "<tr><td>Amount</td><td>Item</td></tr>";
 				
@@ -272,6 +327,29 @@
 		
 	<!-- Right Column -->	
 	<table width="40%" border="0" align="left" colspan="1" cellpadding="5">	
+	
+		<!--Special Items-->
+		<tr>
+		<td bgcolor="#F49F57" width="100%" align="left" style="border:1px solid black">
+			<h2 align="center">Special Items</h2>
+			
+			<?php
+			require_once('/var/www/html/DB_functions/db_query.php');
+			$result = run_query("select item_url from special_items where char_id = " . $player_id);
+			
+			while ($row = mysqli_fetch_array($result))
+			{
+				$item_url = $row['item_url'];
+				echo "<p style='text-align:center;'><img src='$item_url'></p><br />";
+			}		
+			
+			?>
+			
+			
+		</td>
+		</tr>
+		
+		<!--Features and Traits-->
 		<tr>
 		<td bgcolor="#F1948A" width="100%" align="left" style="border:1px solid black">
 			<h2 align="center">Features and Traits</h2>
@@ -279,7 +357,7 @@
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');
-				$result = run_query("select distinct f.feature_name, f.description from features f, char_features cf where f.feat_id = cf.feat_id and cf.char_id = 4");	
+				$result = run_query("select distinct f.feature_name, f.description from features f, char_features cf where f.feat_id = cf.feat_id and cf.char_id = " . $player_id);	
 				
 				echo "<tr><td>Name</td><td>Description</td></tr>";
 				
@@ -304,7 +382,7 @@
 
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');
-				$result = run_query("select * from char_attributes where char_id = 4");					
+				$result = run_query("select * from char_attributes where char_id = " . $player_id);					
 				$row = mysqli_fetch_array($result);
 				
 				$traits = $row['traits'];
