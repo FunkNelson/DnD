@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Smoking Mirror</title>
+  <title>Player Profile</title>
   <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
 </head>
 <body>
@@ -45,6 +45,8 @@
 			</table>  
 			<br />
 		</td>
+		
+		
 		<td bgcolor="#aaa" width="50%" align="left" style="border:1px solid black">
 			<h2 align="center">Saving Throws</h2>
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
@@ -81,6 +83,8 @@
 			<br />				
 		</td>
 		</tr>
+		
+		<!-- Skills -->
 		<tr>
 		<td bgcolor="#b5dcb3" width="100%" align="left" colspan="2" style="border:1px solid black">
 			<h2 align="center">Skills</h2>
@@ -154,6 +158,32 @@
 			<br />			
 		</td>		
 		</tr>
+		
+		<!-- Languages and Proficiencies -->
+		<tr>
+		<td bgcolor="#B9D1E6" width="100%" align="left" colspan="2" style="border:1px solid black">
+		
+			<h2 align="center">Languages and Proficiencies</h2>
+			
+				<?php
+				require_once('/var/www/html/DB_functions/db_query.php');					
+				
+				$result = run_query("select * from languages where char_id = " . $player_id . " order by lang_id");
+				
+				while ($row = mysqli_fetch_array($result))
+				{
+					$lang = $row['lang'];
+					
+					echo "<p align='center'>$lang</p>";
+				}
+				
+				?>	
+			<br />	
+		</td>
+		</tr>
+		
+			
+			
 		<tr><td><a href="http://www.funknelson.com/peaknerdery.php">Go back to the party page</a></td></tr>
 	</table>
 	
@@ -297,6 +327,29 @@
 		
 	<!-- Right Column -->	
 	<table width="40%" border="0" align="left" colspan="1" cellpadding="5">	
+	
+		<!--Special Items-->
+		<tr>
+		<td bgcolor="#F49F57" width="100%" align="left" style="border:1px solid black">
+			<h2 align="center">Special Items</h2>
+			
+			<?php
+			require_once('/var/www/html/DB_functions/db_query.php');
+			$result = run_query("select item_url from special_items where char_id = " . $player_id);
+			
+			while ($row = mysqli_fetch_array($result))
+			{
+				$item_url = $row['item_url'];
+				echo "<p style='text-align:center;'><img src='$item_url'></p><br />";
+			}		
+			
+			?>
+			
+			
+		</td>
+		</tr>
+		
+		<!--Features and Traits-->
 		<tr>
 		<td bgcolor="#F1948A" width="100%" align="left" style="border:1px solid black">
 			<h2 align="center">Features and Traits</h2>
