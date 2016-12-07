@@ -62,16 +62,19 @@
 			
 				<?php
 				require_once('/var/www/html/DB_functions/db_query.php');					
-				$result = run_query("select * from char_saves where char_id = " . $player_id);
 				
+				$saving_throw_query = "select char_id, strength_prof, dexterity_prof, constitution_prof, intelligence_prof, wisdom_prof, charisma_prof, 
+					case strength_prof WHEN 1 THEN (strength_mod + proficiency) ELSE strength_mod END as 'strength_throw',
+					case dexterity_prof WHEN 1 THEN (dexterity_mod + proficiency) ELSE dexterity_mod END as 'dexterity_throw',
+					case constitution_prof WHEN 1 THEN (constitution_mod + proficiency) ELSE constitution_mod END as 'constitution_throw',
+					case intelligence_prof WHEN 1 THEN (intelligence_mod + proficiency) ELSE intelligence_mod END as 'intelligence_throw',
+					case wisdom_prof WHEN 1 THEN (wisdom_mod + proficiency) ELSE wisdom_mod END as 'wisdom_throw',
+					case charisma_prof WHEN 1 THEN (charisma_mod + proficiency) ELSE charisma_mod END as 'charisma_throw'
+					from char_base_stats 
+					where char_id = $player_id";
+		
+				$result = run_query($saving_throw_query);
 				$row = mysqli_fetch_array($result);
-				
-				$strength = $row['strength'];
-				$dexterity = $row['dexterity'];
-				$constitution = $row['constitution'];
-				$intelligence = $row['intelligence'];
-				$wisdom = $row['wisdom'];
-				$charisma = $row['charisma'];
 				
 				$strength_prof = $row['strength_prof'] ? "*" : "";
 				$dexterity_prof = $row['dexterity_prof'] ? "*" : "";
@@ -80,12 +83,19 @@
 				$wisdom_prof = $row['wisdom_prof'] ? "*" : "";
 				$charisma_prof = $row['charisma_prof'] ? "*" : "";
 				
-				echo "<tr><td>$strength_prof</td><td>$strength</td><td>Strength</td></tr>";
-				echo "<tr><td>$dexterity_prof</td><td>$dexterity</td><td>Dexterity</td></tr>";
-				echo "<tr><td>$constitution_prof</td><td>$constitution</td><td>Constitution</td></tr>";
-				echo "<tr><td>$intelligence_prof</td><td>$intelligence</td><td>Intelligence</td></tr>";
-				echo "<tr><td>$wisdom_prof</td><td>$wisdom</td><td>Wisdom</td></tr>";
-				echo "<tr><td>$charisma_prof</td><td>$charisma</td><td>Charisma</td></tr>";
+				$strength_throw = $row['strength_throw'];
+				$dexterity_throw = $row['dexterity_throw'];
+				$constitution_throw = $row['constitution_throw'];
+				$intelligence_throw = $row['intelligence_throw'];
+				$wisdom_throw = $row['wisdom_throw'];
+				$charisma_throw = $row['charisma_throw'];
+
+				echo "<tr><td>$strength_prof</td><td>$strength_throw</td><td>Strength</td></tr>";
+				echo "<tr><td>$dexterity_prof</td><td>$dexterity_throw</td><td>Dexterity</td></tr>";
+				echo "<tr><td>$constitution_prof</td><td>$constitution_throw</td><td>Constitution</td></tr>";
+				echo "<tr><td>$intelligence_prof</td><td>$intelligence_throw</td><td>Intelligence</td></tr>";
+				echo "<tr><td>$wisdom_prof</td><td>$wisdom_throw</td><td>Wisdom</td></tr>";
+				echo "<tr><td>$charisma_prof</td><td>$charisma_throw</td><td>Charisma</td></tr>";
 				?>				
 				
 			</table>
