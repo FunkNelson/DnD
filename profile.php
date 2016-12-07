@@ -34,12 +34,21 @@
 				$wisdom = $row['wisdom'];
 				$charisma = $row['charisma'];
 				
-				echo "<tr><td>$strength</td><td>-1</td><td>Strength</td></tr>";
-				echo "<tr><td>$dexterity</td><td>+4</td><td>Dexterity</td></tr>";
-				echo "<tr><td>$constitution</td><td>+1</td><td>Constitution</td></tr>";
-				echo "<tr><td>$intelligence</td><td>0</td><td>Intelligence</td></tr>";
-				echo "<tr><td>$wisdom</td><td>+1</td><td>Wisdom</td></tr>";
-				echo "<tr><td>$charisma</td><td>+3</td><td>Charisma</td></tr>";
+				$strength_mod = $row['strength_mod'];
+				$dexterity_mod = $row['dexterity_mod'];
+				$constitution_mod = $row['constitution_mod'];
+				$intelligence_mod = $row['intelligence_mod'];
+				$wisdom_mod = $row['wisdom_mod'];
+				$charisma_mod = $row['charisma_mod'];
+				
+				
+				
+				echo "<tr><td>$strength</td><td>$strength_mod</td><td>Strength</td></tr>";
+				echo "<tr><td>$dexterity</td><td>$dexterity_mod</td><td>Dexterity</td></tr>";
+				echo "<tr><td>$constitution</td><td>$constitution_mod</td><td>Constitution</td></tr>";
+				echo "<tr><td>$intelligence</td><td>$intelligence_mod</td><td>Intelligence</td></tr>";
+				echo "<tr><td>$wisdom</td><td>$wisdom_mod</td><td>Wisdom</td></tr>";
+				echo "<tr><td>$charisma</td><td>$charisma_mod</td><td>Charisma</td></tr>";
 				?>	
 				
 			</table>  
