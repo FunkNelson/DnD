@@ -95,7 +95,7 @@ function check_valid_user()
 	else
 	{
 		echo "You are not logged in.<br />";
-		echo "<a href='/var/www/html/login_page.php' >Go back to login page</a>";
+		echo "<a href='http://www.funknelson.com/login_page.php'>Go back to login page</a>";
 	}
 }
 ?>	

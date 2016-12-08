@@ -18,11 +18,15 @@ if ($username_submit && $password_submit)
 	//unsuccessful login
 	{
 		echo "You could not be logged in <br />";
-		echo "<a href='/var/www/html/login_page.php'>Go back to login page</a>";
+		echo "<a href='http://www.funknelson.com/login_page.php'>Go back to login page</a>";
 		exit();
 	}
 }
 
 check_valid_user();
-require_once('/var/www/html/char_update.php');
+
+echo "<p>While you are logged in, you can:</p>";
+echo "<a href='../char_update.php'>Update your character's stats</a><br>";
+echo "<a href='../char_update.php'>Write a journal entry</a><br>";
+echo "<a href='../char_update.php'>Log out</a><br>";
 ?>
