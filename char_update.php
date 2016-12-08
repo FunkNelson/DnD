@@ -11,11 +11,11 @@
 		<button name="d2-" onclick='AjaxRequest();' type="submit" value="20"><img src="http://i.imgur.com/6OuEBBp.png"></button>
 	</div>    
 	
-	<form action="DB_functions/insert_new_values.php" method="post">
+	<form action="/var/www/html/DB_functions/insert_new_values.php" method="post">
 		<table border="0" align="center">
 		
 			<?php
-			require_once('db_query.php');
+			require('/var/www/html/DB_functions/db_query.php');
 			//$party = get_active_heros();
 			$result = run_query("select char_id, name from char_attributes where is_active = 1 order by char_id");
 			$party = array();

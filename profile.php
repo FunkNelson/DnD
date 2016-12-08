@@ -48,9 +48,7 @@
 				$constitution_mod = $row['constitution_mod'];
 				$intelligence_mod = $row['intelligence_mod'];
 				$wisdom_mod = $row['wisdom_mod'];
-				$charisma_mod = $row['charisma_mod'];
-				
-				
+				$charisma_mod = $row['charisma_mod'];						
 				
 				echo "<tr><td>$strength</td><td>$strength_mod</td><td>Strength</td></tr>";
 				echo "<tr><td>$dexterity</td><td>$dexterity_mod</td><td>Dexterity</td></tr>";
@@ -109,6 +107,8 @@
 			<br />				
 		</td>
 		</tr>
+
+
 		
 		<!-- Skills -->
 		<tr>
@@ -183,6 +183,7 @@
 			<br />			
 		</td>		
 		</tr>
+		
 		
 		<!-- Languages and Proficiencies -->
 		<tr>
@@ -359,11 +360,9 @@
 			{
 				$item_url = $row['item_url'];
 				echo "<p style='text-align:center;'><img src='$item_url'></p><br />";
-			}		
-			
+			}					
 			?>
-			
-			
+					
 		</td>
 		</tr>
 		
@@ -392,6 +391,8 @@
 		</td>
 		</tr>	
 		
+		
+		<!--Backstory-->
 		<tr>
 		<td bgcolor="#EDBB99" width="100%" align="left" style="border:1px solid black">
 			<h2 align="center">Backstory</h2>
