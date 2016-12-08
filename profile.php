@@ -8,7 +8,26 @@
 	<!-- Header -->
 	<?php
 	require_once('/var/www/html/profile_strip.php');
+	require('/var/www/html/DB_functions/db_query.php');	
 	$player_id = $_GET['playerid'];
+	
+	//validate that page exists
+	$result = run_query("select char_id from char_base_stats");
+	$pages = array();
+	
+	
+	while ($row = mysqli_fetch_array($result))
+	{	
+		$pages[] = $row['char_id'];		
+	}
+	
+	if (!in_array($player_id, $pages))
+	{
+		echo "This page does not exist.";
+		exit();
+	}
+	
+	
 	print_profile($player_id);
 	?>	
 	
@@ -22,7 +41,7 @@
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>				
 			
 				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');					
+				//require_once('/var/www/html/DB_functions/db_query.php');					
 				$result = run_query("select * from char_base_stats where char_id = " . $player_id);
 				
 				$row = mysqli_fetch_array($result);
