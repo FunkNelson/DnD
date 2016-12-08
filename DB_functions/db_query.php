@@ -1,5 +1,6 @@
 <?php
-function run_query($query) {
+function run_query($query) 
+{
 	require('/var/www/html/DB_functions/db_connection_config_dnd.php');
 	
 	$db = mysqli_connect($server, $db_username, $db_password, $database);
@@ -16,9 +17,10 @@ function run_query($query) {
 	return $result;
 }
 
-function get_active_heros() 
+
+function get_all_heroes() 
 {	
-	$result = run_query("select distinct char_id from char_attributes where is_active = 1 order by char_id");	
+	$result = run_query("select distinct char_id from char_attributes order by char_id");	
 	$party = array();
 	
 	while($row = mysqli_fetch_assoc($result))
@@ -28,6 +30,7 @@ function get_active_heros()
 	
 	return $party;
 }
+
 
 function update_value($query)
 {

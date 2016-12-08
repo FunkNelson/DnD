@@ -9,25 +9,16 @@
 	<?php
 	require_once('/var/www/html/profile_strip.php');
 	require('/var/www/html/DB_functions/db_query.php');	
+
 	$player_id = $_GET['playerid'];
-	
-	//validate that page exists
-	$result = run_query("select char_id from char_base_stats");
-	$pages = array();
-	
-	
-	while ($row = mysqli_fetch_array($result))
-	{	
-		$pages[] = $row['char_id'];		
-	}
+	$pages = get_all_heroes();
 	
 	if (!in_array($player_id, $pages))
 	{
 		echo "This page does not exist.";
 		exit();
 	}
-	
-	
+		
 	print_profile($player_id);
 	?>	
 	
@@ -40,8 +31,7 @@
 					
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>				
 			
-				<?php
-				//require_once('/var/www/html/DB_functions/db_query.php');					
+				<?php				
 				$result = run_query("select * from char_base_stats where char_id = " . $player_id);
 				
 				$row = mysqli_fetch_array($result);
@@ -79,9 +69,7 @@
 			<h2 align="center">Saving Throws</h2>
 			<table border="3" colspan="1" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
 			
-				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');					
-				
+				<?php				
 				$saving_throw_query = "select char_id, strength_prof, dexterity_prof, constitution_prof, intelligence_prof, wisdom_prof, charisma_prof, 
 					case strength_prof WHEN 1 THEN (strength_mod + proficiency) ELSE strength_mod END as 'strength_throw',
 					case dexterity_prof WHEN 1 THEN (dexterity_mod + proficiency) ELSE dexterity_mod END as 'dexterity_throw',
@@ -128,8 +116,7 @@
 			<h2 align="center">Skills</h2>
 			<table border="3" width="50%" align="center" cellpadding="5" bgcolor=#FFFFFF>
 			
-				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');					
+				<?php	
 				$result = run_query("select * from char_skills where char_id = " . $player_id);
 				
 				$row = mysqli_fetch_array($result);
@@ -203,9 +190,7 @@
 		
 			<h2 align="center">Languages and Proficiencies</h2>
 			
-				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');					
-				
+				<?php				
 				$result = run_query("select * from languages where char_id = " . $player_id . " order by lang_id");
 				
 				while ($row = mysqli_fetch_array($result))
@@ -219,8 +204,6 @@
 			<br />	
 		</td>
 		</tr>
-		
-			
 			
 		<tr><td><a href="http://www.funknelson.com/peaknerdery.php">Go back to the party page</a></td></tr>
 	</table>
@@ -234,7 +217,6 @@
 	<table width="30%" border="0" align="left" colspan="1" cellpadding="5">
 	
 		<?php
-		require_once('/var/www/html/DB_functions/db_query.php');
 		$result = run_query("select * from char_base_stats where char_id = " . $player_id);		
 		$row = mysqli_fetch_array($result);
 		
@@ -340,8 +322,7 @@
 			<h2 align="center">Equipment</h2>
 			<table border="3" align="center" cellpadding="5">	
 			
-				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');
+				<?php			
 				$result = run_query("select * from equipment where char_id = " . $player_id);	
 				
 				echo "<tr><td>Amount</td><td>Item</td></tr>";
@@ -372,7 +353,6 @@
 			<h2 align="center">Special Items</h2>
 			
 			<?php
-			require_once('/var/www/html/DB_functions/db_query.php');
 			$result = run_query("select item_url from special_items where char_id = " . $player_id);
 			
 			while ($row = mysqli_fetch_array($result))
@@ -394,7 +374,6 @@
 			<table border="3" cellpadding="5">
 			
 				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');
 				$result = run_query("select distinct f.feature_name, f.description from features f, char_features cf where f.feat_id = cf.feat_id and cf.char_id = " . $player_id);	
 				
 				echo "<tr><td>Name</td><td>Description</td></tr>";
@@ -419,7 +398,6 @@
 			<table border="3" cellpadding="5" align="center">
 
 				<?php
-				require_once('/var/www/html/DB_functions/db_query.php');
 				$result = run_query("select * from char_attributes where char_id = " . $player_id);					
 				$row = mysqli_fetch_array($result);
 				
