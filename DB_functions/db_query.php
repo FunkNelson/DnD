@@ -60,4 +60,28 @@ function update_value($query)
 	echo '<a href="../char_update.php">Back</a><br />';
 	mysqli_close($db);
 }
+
+
+function login($username, $password)
+{
+	$login_query = "select * from dnd_users 
+					where username = '$username' 
+					and passwd = '$password'";
+
+	$result = run_query($login_query);
+	
+	if (!$result)
+	{
+		throw new Exception('Incorrect login.');
+	}
+	
+	if ($result->num_rows>0)
+	{
+		return true;
+	}
+	else
+	{	
+		throw new Exception("Incorrect login.");
+	}
+}
 ?>	
