@@ -1,5 +1,5 @@
 <?php
-require_once('db_query.php');
+require_once('/var/www/html/DB_functions/db_query.php');
 
 $hero = $_POST['char'];
 $attribute = $_POST['attrib'];
