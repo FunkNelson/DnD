@@ -84,4 +84,18 @@ function login($username, $password)
 		throw new Exception("Incorrect login.");
 	}
 }
+
+
+function check_valid_user()
+{
+	if (isset($_SESSION['valid_user']))
+	{
+		echo "Logged in as ".$_SESSION['valid_user'].".<br />";
+	}
+	else
+	{
+		echo "You are not logged in.<br />";
+		echo "<a href='/var/www/html/login_page.php' >Go back to login page</a>";
+	}
+}
 ?>	

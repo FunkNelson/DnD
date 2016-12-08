@@ -1,5 +1,6 @@
 <?php
 require('/var/www/html/DB_functions/db_query.php');
+session_start();
 
 $username_submit = $_POST['username'];
 $password_submit = $_POST['password'];
@@ -11,18 +12,21 @@ if ($username_submit && $password_submit)
 	{
 		login($username_submit, $password_submit);
 		echo "Success!";		
-		//$_SESSION['valid_user'] = $username_submit;
+		$_SESSION['valid_user'] = $username_submit;
 	}
 	catch (Exception $e)
 	//unsuccessful login
 	{
 		echo "You could not be logged in <br />";
-		echo "<a href='/var/www/html/login_page.php' >Go back to login page</a>";
+		echo "<a href='/var/www/html/login_page.php'>Go back to login page</a>";
 		exit();
 	}
 }
 
-echo "more things";
+echo "<h1>CHAR UPDATE PAGE</h1>";
+
+check_valid_user();
+
 
 /*
 $result = run_query("select passwd from dnd_users where username = \"$username_submit\"");
