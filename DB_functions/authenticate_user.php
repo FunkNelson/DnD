@@ -1,5 +1,5 @@
 <?php
-require('/var/www/html/DB_functions/db_query.php');
+require_once('/var/www/html/DB_functions/db_query.php');
 session_start();
 
 $username_submit = $_POST['username'];
@@ -11,7 +11,7 @@ if ($username_submit && $password_submit)
 	try
 	{
 		login($username_submit, $password_submit);
-		echo "Success!";		
+		//echo "Success!";		
 		$_SESSION['valid_user'] = $username_submit;
 	}
 	catch (Exception $e)
@@ -23,25 +23,6 @@ if ($username_submit && $password_submit)
 	}
 }
 
-echo "<h1>CHAR UPDATE PAGE</h1>";
-
 check_valid_user();
-
-
-/*
-$result = run_query("select passwd from dnd_users where username = \"$username_submit\"");
-$row = mysqli_fetch_array($result);
-
-$password_actual = $row['passwd'];
-
-if ($password_actual === $password_submit)
-{
-	echo "ENTER!";
-}
-else
-{	
-	echo "BUTTS!";
-}
-*/
-
+require_once('/var/www/html/char_update.php');
 ?>

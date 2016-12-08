@@ -2,7 +2,7 @@
 <head>
 	<title>Character Update</title>
 	<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
-	<script type='text/javascript' src='Ajax_JavaScript.js'></script>
+	<script type='text/javascript' src='/var/www/html/Ajax_JavaScript.js'></script>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 		<table border="0" align="center">
 		
 			<?php
-			require('/var/www/html/DB_functions/db_query.php');
+			require_once('/var/www/html/DB_functions/db_query.php');
 			//$party = get_active_heros();
 			$result = run_query("select char_id, name from char_attributes where is_active = 1 order by char_id");
 			$party = array();
