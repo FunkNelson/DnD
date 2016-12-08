@@ -1,10 +1,20 @@
 <?php
 require('/var/www/html/DB_functions/db_query.php');
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username_submit = $_POST['username'];
+$password_submit = $_POST['password'];
 
-echo "BUTTS";
-echo $username;
-echo $password;
+$result = run_query("select passwd from dnd_users where username = \"$username_submit\"");
+$row = mysqli_fetch_array($result);
+
+$password_actual = $row['passwd'];
+
+if ($password_actual === $password_submit)
+{
+	echo "ENTER!";
+}
+else
+{	
+	echo "BUTTS!";
+}
 ?>
