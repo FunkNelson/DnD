@@ -6,7 +6,7 @@
 <body>	
 	<h1>Log in</h1>
 	
-	<form action="/var/www/html/DB_functions/authenticate_user.php" method="post">
+	<form action="DB_functions/authenticate_user.php" method="post">
 		Username:<br>
 		<input type="text" name="username"><br>
 		Password:<br>

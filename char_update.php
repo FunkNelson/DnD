@@ -19,7 +19,7 @@
 			
 			check_valid_user();
 			
-			echo "<form action='/var/www/html/DB_functions/insert_new_values.php' method='post'>";
+			echo "<form action='DB_functions/insert_new_values.php' method='post'>";
 			echo "<table border='0' align='center'>";
 			
 			//$party = get_active_heros();
