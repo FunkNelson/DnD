@@ -221,11 +221,15 @@
 		$result = run_query("select * from char_base_stats where char_id = " . $player_id);		
 		$row = mysqli_fetch_array($result);
 		
+		$pw_result = run_query("select (10 + perception) as 'passive_wisdom' from char_skills where char_id = " . $player_id);
+		$pw_row = mysqli_fetch_array($pw_result);
+		
+		
 		$armor = $row['armor'];
 		$initiative = $row['initiative'];
 		$speed = $row['speed'];
 		$proficiency = $row['proficiency'];
-		$passive_wisdom = $row['passive_wisdom'];
+		$passive_wisdom = $pw_row['passive_wisdom'];
 		$inspiration = $row['inspiration'];
 		$max_hp = $row['max_hp'];
 		$current_hp = $row['current_hp'];
